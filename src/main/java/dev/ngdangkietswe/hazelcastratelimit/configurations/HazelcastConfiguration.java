@@ -3,10 +3,12 @@ package dev.ngdangkietswe.hazelcastratelimit.configurations;
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.core.HazelcastInstance;
-import dev.ngdangkietswe.hazelcastratelimit.models.ConfigRateLimit;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Map;
 
 /**
  * @author ngdangkietswe
@@ -14,31 +16,17 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
+@RequiredArgsConstructor
 public class HazelcastConfiguration {
 
-    @Value("#{'${hazelcast.ngdangkietswe.address}'.split(',')}")
-    private String[] address;
-    @Value("${hazelcast.ngdangkietswe.cluster_name}")
-    private String clusterName;
-    @Value("${hazelcast.ngdangkietswe.limit}")
-    private int limit;
-    @Value("${hazelcast.ngdangkietswe.second}")
-    private int second;
+    private final HazelcastConfigurationProperties hazelcastConfigurationProperties;
 
     @Bean
     public HazelcastInstance hazelcastInstance() {
         ClientConfig clientConfig = new ClientConfig();
-        clientConfig.setClusterName(clusterName);
-        clientConfig.getNetworkConfig().addAddress(address);
+        clientConfig.setClusterName(hazelcastConfigurationProperties.getClusterName());
+        clientConfig.getNetworkConfig().addAddress(hazelcastConfigurationProperties.getAddress());
         clientConfig.getNetworkConfig().setConnectionTimeout(50000);
         return HazelcastClient.newHazelcastClient(clientConfig);
-    }
-
-    @Bean
-    public ConfigRateLimit configRateLimit() {
-        ConfigRateLimit configDefault = new ConfigRateLimit();
-        configDefault.setLimit(limit);
-        configDefault.setSecond(second);
-        return configDefault;
     }
 }

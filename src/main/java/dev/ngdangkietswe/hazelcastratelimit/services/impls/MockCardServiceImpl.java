@@ -1,6 +1,6 @@
 package dev.ngdangkietswe.hazelcastratelimit.services.impls;
 
-import dev.ngdangkietswe.hazelcastratelimit.models.CardDto;
+import dev.ngdangkietswe.hazelcastratelimit.models.dtos.CardDto;
 import dev.ngdangkietswe.hazelcastratelimit.services.MockCardService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;

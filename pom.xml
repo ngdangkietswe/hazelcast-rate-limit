@@ -30,6 +30,7 @@
         <java.version>17</java.version>
         <hazelcast.version>5.2.1</hazelcast.version>
         <commons-lang3.version>3.17.0</commons-lang3.version>
+        <javafaker.version>1.0.2</javafaker.version>
     </properties>
     <dependencies>
         <dependency>
@@ -67,6 +68,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
         </dependency>
     </dependencies>
 

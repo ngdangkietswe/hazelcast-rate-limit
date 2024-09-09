@@ -1,18 +1,17 @@
-package dev.ngdangkietswe.hazelcastratelimit.models;
+package dev.ngdangkietswe.hazelcastratelimit.models.dtos;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * @author ngdangkietswe
- * @since 9/8/2024
+ * @since 9/9/2024
  */
 
 @Data
@@ -20,10 +19,12 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder(setterPrefix = "set", builderMethodName = "newBuilder")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class CardDto implements Serializable {
+public class UserDto {
 
-    private String cardNumber;
-    private String serial;
-    private String expireDate;
-    private String cardTelco;
+    private UUID id;
+    private String username;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
 }

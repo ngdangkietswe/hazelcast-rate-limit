@@ -1,6 +1,6 @@
 package dev.ngdangkietswe.hazelcastratelimit.services;
 
-import dev.ngdangkietswe.hazelcastratelimit.models.CardDto;
+import dev.ngdangkietswe.hazelcastratelimit.models.dtos.CardDto;
 
 import java.util.List;
 
