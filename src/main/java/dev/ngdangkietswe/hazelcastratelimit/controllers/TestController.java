@@ -6,7 +6,6 @@ import dev.ngdangkietswe.hazelcastratelimit.constants.HazelcastConstant;
 import dev.ngdangkietswe.hazelcastratelimit.enums.EndPointRatelimitEnum;
 import dev.ngdangkietswe.hazelcastratelimit.models.ConfigRateLimit;
 import dev.ngdangkietswe.hazelcastratelimit.payloads.responses.HazelcastResponse;
-import dev.ngdangkietswe.hazelcastratelimit.services.MockUserService;
 import dev.ngdangkietswe.hazelcastratelimit.utils.HazelcastUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -25,16 +24,15 @@ import java.util.Map;
  */
 
 @RestController
-@RequestMapping("/api")
 @RequiredArgsConstructor
 @Log4j2
-public class MockUserController {
+@RequestMapping("/api")
+public class TestController {
 
-    private final MockUserService mockUserService;
     private final HazelcastResponse hazelcastResponse;
 
-    @GetMapping("/mock-users")
-    public ResponseEntity<?> mockUsers(@RequestHeader Map<String, String> headers) {
-        return hazelcastResponse.asResponse(headers, EndPointRatelimitEnum.MOCK_USERS.getValue(), mockUserService.mockUsers());
+    @GetMapping("/mock-test")
+    public ResponseEntity<?> mockTest(@RequestHeader Map<String, String> headers) {
+        return hazelcastResponse.asResponse(headers, EndPointRatelimitEnum.MOCK_TEST.getValue(), Map.of("message", "Hello World"));
     }
 }

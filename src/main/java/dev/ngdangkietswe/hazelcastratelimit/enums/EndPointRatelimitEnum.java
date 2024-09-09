@@ -13,7 +13,8 @@ import lombok.Getter;
 public enum EndPointRatelimitEnum {
 
     MOCK_CARDS("mock-cards"),
-    MOCK_USERS("mock-users");
+    MOCK_USERS("mock-users"),
+    MOCK_TEST("mock-test");
 
     private final String value;
 }
